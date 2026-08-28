@@ -1,0 +1,109 @@
+/* ---- tokens ---------------------------------------------------------- */
+:root {
+  --bg:        #fdfcfa;
+  --surface:   #ffffff;
+  --text:      #1b1a17;
+  --muted:     #6b675f;
+  --line:      #e3ded5;
+  --accent:    #7a5c3e;
+  --accent-sf: #f2ece3;
+  --maxw:      44rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      #131211;
+    --surface: #1b1a18;
+    --text:    #eae6df;
+    --muted:   #a09a90;
+    --line:    #2e2b27;
+    --accent:  #c9a37a;
+    --accent-sf:#241f19;
+  }
+}
+
+/* ---- base ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.65 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  letter-spacing: .002em;
+}
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.4rem; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+a:hover { border-bottom-color: var(--accent); }
+
+h1, h2, h3 { line-height: 1.25; letter-spacing: -.01em; font-weight: 600; }
+h1 { font-size: 1.9rem; margin: 0 0 .3rem; }
+h2 { font-size: 1.18rem; margin: 2.6rem 0 .9rem; }
+h3 { font-size: 1rem; margin: 0 0 .2rem; }
+p  { margin: 0 0 1.05rem; }
+
+/* ---- header / nav ---------------------------------------------------- */
+header.site {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+header.site .wrap {
+  display: flex; flex-wrap: wrap; gap: .6rem 1.4rem;
+  align-items: baseline; justify-content: space-between;
+  padding-top: 1.5rem; padding-bottom: 1.5rem;
+}
+.brand {
+  font-size: 1.05rem; font-weight: 600; color: var(--text);
+  border: 0; letter-spacing: -.01em;
+}
+nav.site { display: flex; gap: 1.2rem; font-size: .92rem; }
+nav.site a { color: var(--muted); border: 0; }
+nav.site a:hover { color: var(--text); }
+nav.site a[aria-current="page"] { color: var(--text); border-bottom: 1.5px solid var(--accent); padding-bottom: 2px; }
+
+main { padding: 3rem 0 4rem; }
+
+/* ---- intro block ----------------------------------------------------- */
+.intro { display: flex; gap: 1.8rem; align-items: flex-start; margin-bottom: 2.2rem; }
+.intro img {
+  width: 128px; height: 128px; flex: none;
+  border-radius: 4px; object-fit: cover;
+  background: var(--accent-sf); border: 1px solid var(--line);
+}
+.intro .tagline { color: var(--muted); font-size: 1rem; margin: 0 0 .9rem; }
+.links { display: flex; flex-wrap: wrap; gap: .9rem; font-size: .9rem; }
+
+/* ---- entries (projects, teaching, cv rows) --------------------------- */
+.entry {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 0 1.4rem;
+  padding: 1.1rem 0; border-top: 1px solid var(--line);
+}
+.entry:last-child { border-bottom: 1px solid var(--line); }
+.entry .when { color: var(--muted); font-size: .87rem; padding-top: .18rem; font-variant-numeric: tabular-nums; }
+.entry .what p:last-child { margin-bottom: 0; }
+.entry .what p { font-size: .96rem; color: var(--muted); }
+.entry .role { color: var(--muted); font-size: .92rem; font-style: italic; }
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .55rem; }
+.tag {
+  font: 500 .75rem/1 ui-sans-serif, system-ui, sans-serif;
+  color: var(--muted); background: var(--accent-sf);
+  border: 1px solid var(--line); border-radius: 999px; padding: .3rem .55rem;
+}
+
+/* ---- misc ------------------------------------------------------------ */
+.note {
+  background: var(--accent-sf); border: 1px dashed var(--line);
+  border-radius: 6px; padding: .9rem 1.1rem; font-size: .9rem; color: var(--muted);
+}
+footer.site {
+  border-top: 1px solid var(--line); padding: 1.6rem 0 2.4rem;
+  color: var(--muted); font-size: .85rem;
+}
+
+@media (max-width: 620px) {
+  body { font-size: 16px; }
+  .intro { flex-direction: column; gap: 1.1rem; }
+  .intro img { width: 96px; height: 96px; }
+  .entry { grid-template-columns: 1fr; gap: .3rem; }
+  .entry .when { padding-top: 0; }
+}
